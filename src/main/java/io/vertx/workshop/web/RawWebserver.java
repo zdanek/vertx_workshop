@@ -13,6 +13,7 @@ public class RawWebserver extends AbstractVerticle {
         vertx.createHttpServer().requestHandler(request -> {
             String file = "";
             if (request.path().equals("/")) {
+                request.response().headers().set("content-type", "text/html");
                 file = "index.html";
             } else if (!request.path().contains("..")) {
                 file = request.path();

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/sockjs-0.3.4.min.js"></script>
+    <script src="js/vertxbus.js"></script>
+
+    <title>EventBus example</title>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var eb = new vertx.EventBus(window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/eventbus');
+
+            eb.onopen = function() {
+                console.log('EB opened')
+                eb.registerHandler('web.client', function(messageFromPublisher) {
+                    console.log('Message from backed: ' + messageFromPublisher);
+                    $('div#messages').append(messageFromPublisher + "<br />")
+                })
+
+            }
+        })
+    </script>
+
+
+</head>
+<body>
+<div style="font-size: 30px; color: blueviolet">Vert.x EventBus on Client side!</div>
+<img src="img/vertx-logo.png" />
+<div id="messages" style="font-size: 20px; color: brown">Here come the news!<br /></div>
+
+</body>
+</html>

@@ -21,6 +21,5 @@ public class RawWebserver extends AbstractVerticle {
             request.response().sendFile("webroot/" + file);
         }).listen(8080);
 
-
     }
 }

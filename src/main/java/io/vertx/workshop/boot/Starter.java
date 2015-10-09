@@ -5,6 +5,7 @@ import io.vertx.core.Vertx;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 import io.vertx.workshop.client.WebClient;
+import io.vertx.workshop.web.RawWebserver;
 
 public class Starter extends AbstractVerticle {
 
@@ -19,6 +20,7 @@ public class Starter extends AbstractVerticle {
     public void start() throws Exception {
         LOG.info("Starting vert.x 3 application");
 
+        vertx.deployVerticle(RawWebserver.class.getName());
         vertx.deployVerticle(WebClient.class.getName());
         LOG.info("Ready!");
     }

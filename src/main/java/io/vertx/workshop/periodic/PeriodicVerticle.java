@@ -10,6 +10,7 @@ public class PeriodicVerticle extends AbstractVerticle {
     @Override
     public void start() throws Exception {
 
+        System.out.println("Deployed periodinc sender");
         vertx.setPeriodic(2000L,
                 event -> vertx.eventBus().publish(RoutingWebServer.WEB_CLIENT_ADDRESS, "Hello " + i++));
 
